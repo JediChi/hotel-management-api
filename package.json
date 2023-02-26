@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
+  
   "scripts": {
     "build": "tsc",
-    "start": "node ./src/server.ts",
+    "start": "ts-node ./src/server.ts",
     "dev": "nodemon --exec npx ts-node -r dotenv/config ./src/server.ts"
   },
   "keywords": [],

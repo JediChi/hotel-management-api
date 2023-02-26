@@ -3,7 +3,7 @@ import roomTypeController from "../controllers/roomType.controller";
 import validator from "../middlewares/validate.middlewares";
 import auth from "../middlewares/authenticator.middlewares";
 import authorize from "../middlewares/authorization.middlewares";
-import { CreateRoomTypeSchema, UpdateRoomTypeSchema } from "../schemas/roomType.schema";
+import { CreateRoomTypeSchema, UpdateRoomTypeSchema } from "../schemas/roomtype.schema";
 const roomTypeRouter = express.Router();
 
 roomTypeRouter.post("/", [

@@ -34,7 +34,7 @@ This is a hotel-management api that allows for creation of rooms, room-types, us
 
 ## ROOMS
 
-## POST
+### POST
 
 ### Create Room
 
@@ -52,8 +52,9 @@ To create a room, you need to do the following:
 
 ### Request Headers
 
-```json
-{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTU0MDh9.9N6em-9rpWY8jQfqWKHOEEavL_dKeXD_5DMN4MQIx8g}```
+ ```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTU0MDh9.9N6em-9rpWY8jQfqWKHOEEavL_dKeXD_5DMN4MQIx8g}
+```
 
 Sample request
 
@@ -62,14 +63,14 @@ Sample request
     "name" : "Penthouse",
     "roomType" : "63fc8b60108662d5e58e25df",
     "price": 10000
-}```
+}
+```
 
 ## GET
 
 ### Fetch All Rooms
 
 <https://hotel-management-api-yhen.onrender.com/api/v1/rooms>
-
 
 ### Description
 
@@ -82,10 +83,11 @@ To fetch all rooms, you need to do the following:
 1. You need to be authenticated. Both users and admin can fetch a room but must first be authenticated.
 2. You can add optional params such as search by name, room-type or min and max-price
 
-
 ### Request Headers
 
-```json{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTYyOTV9.H-QPjwBFNPrfRBqwvcQvzeLn8fi_q3C-brYtkPlwp70}```
+```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTYyOTV9.H-QPjwBFNPrfRBqwvcQvzeLn8fi_q3C-brYtkPlwp70}
+```
 
 ## GET
 
@@ -106,8 +108,10 @@ To get a room by id, you need to do the following:
 
 ### Request Headers
 
-```json{Authorization: 
+```json
+{Authorization: 
 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTYyOTV9.H-QPjwBFNPrfRBqwvcQvzeLn8fi_q3C-brYtkPlwp70}
+```
 
 ### PATCH
 
@@ -127,7 +131,6 @@ To update a room by id, you need to do the following:
 2. You need to have a room Id. To get a room Id, you need to fetch all the room by using the fetch room endpoints. Then copy the id and put it in the url as shown in the endpoint above
 3. Then go the body and update what you want to be updated as shown below.
 
-
 ### Request Headers
 
 ```json{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI}```
@@ -137,14 +140,14 @@ Sample request
 ```json
 {
     "price": 11000
-}```
+}
+```
 
 ### DELETE
 
 ### Delete Room By Id
 
 <https://hotel-management-api-yhen.onrender.com/api/v1/rooms/63fc8d3b108662d5e58e25ee>
-
 
 ### Description
 
@@ -157,10 +160,10 @@ To delete a room by id, you need to do the following:
 1. You need to be authenticated. Both users and admin can delete a room by id but must first be authenticated.
 2. You need to have a room Id. To get a room Id, you need to fetch all the room by using the fetch room endpoints. Then copy the id and put it in the url as shown in the endpoint above
 
-
 ### Request Headers
 
-```{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI}```
+```{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI}
+```
 
 ## ROOM TYPES
 
@@ -179,14 +182,18 @@ To create a room-type, you need to do the following:
 1. You need to be authenticated and authorized. Only admin can create a room-type but must first be logged in as an admin.
 
 ### Request Headers
-```json{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjODYzNDEwODY2MmQ1ZTU4ZTI1YjYiLCJpYXQiOjE2Nzc0OTQ5NTd9.RwVnzuUSLelN9jRjtdumJVBsCCDWjQ2hCRHEpL4J6y8}```
 
-Sample Request 
+```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjODYzNDEwODY2MmQ1ZTU4ZTI1YjYiLCJpYXQiOjE2Nzc0OTQ5NTd9.RwVnzuUSLelN9jRjtdumJVBsCCDWjQ2hCRHEpL4J6y8}
+```
+
+Sample Request
 
 ```json
 {
     "name": "Double room"
-}```
+}
+```
 
 ### GET
 
@@ -206,7 +213,9 @@ To fetch all room-types, you need to do the following:
 
 ### Request Headers
 
-```json{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiZmVjYmFlZDU4OGZkYzA4N2I1OWUiLCJpYXQiOjE2Nzc0NTkzNjN9.Shq20btdSHPG6p6uXURbOfLN88BpFOuw4M9JN1EhE70}```
+```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiZmVjYmFlZDU4OGZkYzA4N2I1OWUiLCJpYXQiOjE2Nzc0NTkzNjN9.Shq20btdSHPG6p6uXURbOfLN88BpFOuw4M9JN1EhE70}
+```
 
 ### GET
 
@@ -281,6 +290,7 @@ To create a user, you need to do the following:
 3. Please note that YOU CAN NOT REGISTER THE SAME EMAIL MORE THAN ONCE.
 4. On creating a user, you would get a token that can be used to login and perform other activities
 5. Also note by default, a user is created as a guest.
+
 ### Request Headers
 
 Sample request
@@ -291,14 +301,14 @@ Sample request
     "email": "guestchinyere98@gmail.com",
     "password": "guestchi98234"
 
-}```
+}
+```
 
 ### POST
 
 ### Login User
 
 <https://hotel-management-api-yhen.onrender.com/api/v1/users/login>
-
 
 ### Description
 
@@ -318,14 +328,14 @@ Sample request
 {
       "email": "guestchinyere98@gmail.com",
     "password": "guestchi98234"
-}```
+}
+```
 
 ## GET
 
 ### Read User Profile
 
 <https://hotel-management-api-yhen.onrender.com/api/v1/users/me>
-
 
 ### Description
 
@@ -339,10 +349,11 @@ To get your own profile, you need to do the following:
 2. You need to be logged in.
 3. The token gotten from logging in is what would be used to authenticate your profile.
 
-
 ### Request Headers
 
-```json{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI}```
+```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI}
+```
 
 ### PATCH
 
@@ -363,16 +374,19 @@ To update your own profile, you need to do the following:
 3. The token gotten from logging in is what would be used to authenticate your profile.
 4. Then go the the body and update whatever you want to update.
 
-
 ### Request Headers
-```json{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzYzY1YTc2MzFiMDZlYzdkMWY2ZmUiLCJpYXQiOjE2NzY5MjA0MzR9.7GuOzUST4ct-6cowIA0T-JDPxv_sNrJLQxCYnEcak58}```
+
+```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzYzY1YTc2MzFiMDZlYzdkMWY2ZmUiLCJpYXQiOjE2NzY5MjA0MzR9.7GuOzUST4ct-6cowIA0T-JDPxv_sNrJLQxCYnEcak58}
+```
 
 Sample request
 
 ```json
 {
     "email": "chinyerejedidiah56@gmail.com"
-}```
+}
+```
 
 ### DELETE
 
@@ -394,4 +408,6 @@ To delete your own profile, you need to do the following:
 
 ### Request Headers
 
-```json{Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzYmZkYjA4NTJhYzU0MmExY2RlYTEiLCJpYXQiOjE2NzY5MTg3ODN9.GO7KYZK0TB9RSJb-vosyNaNwmyzgC77bI-GHkWofle8}```
+```json
+{Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzYmZkYjA4NTJhYzU0MmExY2RlYTEiLCJpYXQiOjE2NzY5MTg3ODN9.GO7KYZK0TB9RSJb-vosyNaNwmyzgC77bI-GHkWofle8}
+```

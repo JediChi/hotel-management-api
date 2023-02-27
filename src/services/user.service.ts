@@ -20,16 +20,7 @@ class UserService {
     return ({user,token});
   }
 
-  // async logOutUser() {
-  //   const user =  await User.logOut()
-  //     await user.save();
-  // }
-
-  // async listAll(filter = {}) {
-  //   const user = await User.find(filter);
-    
-  //   return user;
-  // }
+  
 
 
   async updateOne(_user: any, update: Partial<ICreateUser>) {

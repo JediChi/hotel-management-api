@@ -21,7 +21,6 @@ export default (app: Application) => {
   app.use(morgan('dev'));
   app.use(cors());
   app.use(express.json());
-  // app.use(pinoHttp( logger ));
   indexRoutes(app);
 
   app.use(asyncError);

@@ -1,0 +1,486 @@
+{
+	"info": {
+		"_postman_id": "c753ba52-57dc-4264-9c44-e63fd7132dc4",
+		"name": "Hotel-Room Api",
+		"description": "**Description**\n\nThis is a hotel-management api that allows for creation of rooms, room-types, users and also other endpoints as well.\n\n**Things To Know**\n\n1. By default, all users created are assigned guest roles that can only create rooms, fetch room-types and perform all other activities **EXCEPT** creating, editing and deleting room-types which only the admin can do.\n2. To login as an admin, you need to use the following credentials: \"email\": adminchinyere98@gmail.com, \"password\": adminchi98234.\n3. Before performing any operation apart from creating and login users, you need to authenticate. To do this, you need to get the token from login and put it in the bearer as shown below in the endpoints.\n4. Please note that you can only update, read and delete the current user logged in based on the token. **YOU CAN NOT SEE ALL USERS ONLY THE LOGGED IN USER.**",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25794905"
+	},
+	"item": [
+		{
+			"name": "Create Room",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTU0MDh9.9N6em-9rpWY8jQfqWKHOEEavL_dKeXD_5DMN4MQIx8g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Penthouse\",\r\n    \"roomType\" : \"63fc8b60108662d5e58e25df\",\r\n    \"price\": 10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/rooms",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rooms"
+					]
+				},
+				"description": "**Description**\n\nThis is a post end point that allows a user to create a room.\n\n**Things To know**\n\nTo create a room, you need to do the following:\n\n1. You need to be authenticated. Both users and admin can create a room but must first be authenticated.\n2. You need to have a roomTypeId. To get a roomTypeId, you need to fetch all the room types by using the fetch room types endpoints. Then copy the id and put it as shown in the example below"
+			},
+			"response": []
+		},
+		{
+			"name": "Create RoomType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjODYzNDEwODY2MmQ1ZTU4ZTI1YjYiLCJpYXQiOjE2Nzc0OTQ5NTd9.RwVnzuUSLelN9jRjtdumJVBsCCDWjQ2hCRHEpL4J6y8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Double room\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/room-types",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"room-types"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a post end point that allows a user to create a room-type.\n\n**Things To know**\n\nTo create a room-type, you need to do the following:\n\n- You need to be authenticated and authorized. Only admin can create a room-type but must first be logged in as an admin.\n    \n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch All Rooms",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTYyOTV9.H-QPjwBFNPrfRBqwvcQvzeLn8fi_q3C-brYtkPlwp70",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/rooms",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rooms"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a get end point that allows a user to fetch all rooms.\n\n**Things To know**\n\nTo fetch all rooms, you need to do the following:\n\n- You need to be authenticated. Both users and admin can fetch a room but must first be authenticated.\n- You can add optional params such as search by name, room-type or min and max-price\n    \n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch All Room Types",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiZmVjYmFlZDU4OGZkYzA4N2I1OWUiLCJpYXQiOjE2Nzc0NTkzNjN9.Shq20btdSHPG6p6uXURbOfLN88BpFOuw4M9JN1EhE70",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/room-types",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"room-types"
+					]
+				},
+				"description": "**Description**\n\nThis is a get end point that allows a user to fetch all room-types.\n\n**Things To know**\n\nTo fetch all room-types, you need to do the following:\n\n- You need to be authenticated. Both users and admin can fetch room-types but must first be authenticated."
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Single Room by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTYyOTV9.H-QPjwBFNPrfRBqwvcQvzeLn8fi_q3C-brYtkPlwp70",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/rooms/63fc8d3b108662d5e58e25ee",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rooms",
+						"63fc8d3b108662d5e58e25ee"
+					]
+				},
+				"description": "**Description**\n\nThis is a get end point that allows a user to fetch a single room by id.\n\n**Things To know**\n\nTo get a room by id, you need to do the following:\n\n- You need to be authenticated. Both users and admin can get a room by id but must first be authenticated.\n- You need to have a room Id. To get a room Id, you need to fetch all the room by using the fetch room endpoints. Then copy the id and put it as shown in the example below"
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Single RoomType by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/room-types/63fc8d3b108662d5e58e25ee",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"room-types",
+						"63fc8d3b108662d5e58e25ee"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a get end point that allows a user to fetch a room-type by id.\n\n**Things To know**\n\nTo get a room-type by id, you need to do the following:\n\n- You need to be authenticated. Both users and admin can get a room-type by id but must first be authenticated.\n- You need to have a room-type Id. To get a room-type Id, you need to fetch all the room-type by using the fetch room-type endpoints. Then copy the id and put it as shown in the example below\n    \n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Room by Id",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": 11000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/rooms/63fc8d3b108662d5e58e25ee",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rooms",
+						"63fc8d3b108662d5e58e25ee"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a patch end point that allows a user to update a single room by id.\n\n**Things To know**\n\nTo update a room by id, you need to do the following:\n\n- You need to be authenticated. Both users and admin can update a room by id but must first be authenticated.\n- You need to have a room Id. To get a room Id, you need to fetch all the room by using the fetch room endpoints. Then copy the id and put it in the url as shown in the endpoint above\n- Then go the body and update what you want to be updated as shown below.\n    \n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Room Type by Id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/room-types/63fc8d3b108662d5e58e25ee",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"room-types",
+						"63fc8d3b108662d5e58e25ee"
+					]
+				},
+				"description": "**Description**\n\nThis is a patch end point that allows an admin to update a single room-type by id.\n\n**Things To know**\n\nTo update a room-type by id, you need to do the following:\n\n- You need to be authenticated and authorized. Only admin can update a room-type by id but must first be logged in as an admin.\n- You need to have a room-type Id. To get a room-type Id, you need to fetch all the room-type by using the fetch room-type endpoints. Then copy the id and put it in the url as shown in the endpoint above\n- Then go the body and update what you want to be updated as shown below."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Room By Id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/rooms/63fc8d3b108662d5e58e25ee",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rooms",
+						"63fc8d3b108662d5e58e25ee"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a delete end point that allows a user to delete a single room by id.\n\n**Things To know**\n\nTo delete a room by id, you need to do the following:\n\n- You need to be authenticated. Both users and admin can delete a room by id but must first be authenticated.\n- You need to have a room Id. To get a room Id, you need to fetch all the room by using the fetch room endpoints. Then copy the id and put it in the url as shown in the endpoint above\n    \n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete RoomType by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/room-types/63fc8d3b108662d5e58e25ee",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"room-types",
+						"63fc8d3b108662d5e58e25ee"
+					]
+				},
+				"description": "**Description**\n\nThis is a delete end point that allows an admin to delete a single room-type by id.\n\n**Things To know**\n\nTo delete a room-type by id, you need to do the following:\n\n- You need to be authenticated and authorized. Only admin can delete a room-type by id but must first be logged in as an admin.\n- You need to have a room-type Id. To get a room-type Id, you need to fetch all the room-type by using the fetch room-type endpoints. Then copy the id and put it in the url as shown in the endpoint above"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \" Guest Chinyere\",\r\n    \"email\": \"guestchinyere98@gmail.com\",\r\n    \"password\": \"guestchi98234\"\r\n    \r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/users",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				},
+				"description": "**Description**\n\nThis is a post end point that allows to create a user.\n\n**Things To know**\n\nTo create a user, you need to do the following:\n\n- Both users and admin can create a user. Aunthentication is not required.\n- To create a user, pls input the following fields: \"name\": \"your name\", \"email\": \"your email\", \"password\": \"your password\".\n- Please note that **YOU CAN NOT REGISTER THE SAME EMAIL MORE THAN ONCE.**\n- On creating a user, you would get a token that can be used to login and perform other activities\n- Also note by default, a user is created as a guest."
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"email\": \"guestchinyere98@gmail.com\",\r\n    \"password\": \"guestchi98234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/users/login",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"login"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a post end point that allows to login a user.\n\n**Things To know**\n\nTo login a user, you need to do the following:\n\n- Both users and admin can login. Aunthentication is not required.\n- To login a user, pls input the following fields:  \"email\": \"your email\", \"password\": \"your password\".\n- On login a user, you would get a token that can be used to perform other activities\n    \n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Read User Profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/users/me",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"me"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a get end point that allows a user to fetch **ONLY** his own profile.\n\n**Things To know**\n\nTo get your own profile, you need to do the following:\n\n- You need to be authenticated. Both users and admin can get their individual profile but must first be authenticated.\n- You need to be logged in.\n- The token gotten from logging in is what would be used to authenticate your profile.\n    \n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzYzY1YTc2MzFiMDZlYzdkMWY2ZmUiLCJpYXQiOjE2NzY5MjA0MzR9.7GuOzUST4ct-6cowIA0T-JDPxv_sNrJLQxCYnEcak58",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"chinyerejedidiah56@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/users/me",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"me"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a patch end point that allows a user to update **ONLY** his own profile.\n\n**Things To know**\n\nTo update your own profile, you need to do the following:\n\n- You need to be authenticated. Both users and admin can update their individual profile but must first be authenticated.\n- You need to be logged in.\n- The token gotten from logging in is what would be used to authenticate your profile.\n- Then go the the body and update whatever you want to update.\n    \n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2YzYmZkYjA4NTJhYzU0MmExY2RlYTEiLCJpYXQiOjE2NzY5MTg3ODN9.GO7KYZK0TB9RSJb-vosyNaNwmyzgC77bI-GHkWofle8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://hotel-management-api-yhen.onrender.com/api/v1/users/me",
+					"protocol": "https",
+					"host": [
+						"hotel-management-api-yhen",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"me"
+					]
+				},
+				"description": "StartFragment\n\n**Description**\n\nThis is a delete end point that allows a user to delete **ONLY** his own profile.\n\n**Things To know**\n\nTo delete your own profile, you need to do the following:\n\n- You need to be authenticated. Both users and admin can delete their individual profile but must first be authenticated.\n- You need to be logged in.\n- The token gotten from logging in is what would be used to authenticate your profile and then delete it.\n    \n\nEndFragment"
+			},
+			"response": []
+		}
+	]
+}

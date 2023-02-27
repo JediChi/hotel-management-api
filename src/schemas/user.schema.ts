@@ -13,7 +13,7 @@ export const CreateUserSchema = Joi.object({
     .required()
     .lowercase()
     .trim(),
-    // roles: Joi.string().lowercase().trim(),
+    roles: Joi.string().lowercase().trim(),
     // isAdmin: Joi.boolean().default(false),
 });
 

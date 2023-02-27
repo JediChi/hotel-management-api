@@ -9,7 +9,7 @@ const authorize = async (req: Request, res: Response, next: NextFunction) => {
         data: `Acess denied, can only view`,
       });
     }
-    next();
+    next()
 
   } catch (error) {
     return res.status(500).send({ success: false, error: "Failed" });

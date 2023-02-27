@@ -52,7 +52,7 @@ To create a room, you need to do the following:
 
 ### Request Headers
 
- ```json
+```json
 {Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTU0MDh9.9N6em-9rpWY8jQfqWKHOEEavL_dKeXD_5DMN4MQIx8g}
 ```
 
@@ -60,9 +60,26 @@ Sample request
 
 ```json
 {
-    "name" : "Penthouse",
+    "name" : "Suite",
     "roomType" : "63fc8b60108662d5e58e25df",
-    "price": 10000
+    "price": 60000
+}
+```
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "Room created successfully",
+    "data": {
+        "name": "Suite",
+        "roomType": "63fc8b60108662d5e58e25df",
+        "price": 60000,
+        "_id": "63fcd32fc465f315bfca4876",
+        "createdAt": "2023-02-27T15:58:39.636Z",
+        "updatedAt": "2023-02-27T15:58:39.636Z"
+    }
 }
 ```
 
@@ -89,6 +106,44 @@ To fetch all rooms, you need to do the following:
 {Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTYyOTV9.H-QPjwBFNPrfRBqwvcQvzeLn8fi_q3C-brYtkPlwp70}
 ```
 
+Sample request
+
+<https://hotel-management-api-yhen.onrender.com/api/v1/rooms?roomType=63fc8b60108662d5e58e25df>
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "Room listed successfully",
+    "data": [
+        {
+            "_id": "63fc8d3b108662d5e58e25ee",
+            "name": "Penthouse",
+            "roomType": {
+                "_id": "63fc8b60108662d5e58e25df",
+                "name": "double room"
+            },
+            "price": 11000,
+            "createdAt": "2023-02-27T11:00:11.503Z",
+            "updatedAt": "2023-02-27T11:19:35.691Z"
+        },
+        {
+            "_id": "63fcd32fc465f315bfca4876",
+            "name": "Suite",
+            "roomType": {
+                "_id": "63fc8b60108662d5e58e25df",
+                "name": "double room"
+            },
+            "price": 60000,
+            "createdAt": "2023-02-27T15:58:39.636Z",
+            "updatedAt": "2023-02-27T15:58:39.636Z"
+        }
+    ]
+}
+```
+
+
 ## GET
 
 ## Fetch Single Room by Id
@@ -111,6 +166,26 @@ To get a room by id, you need to do the following:
 ```json
 {Authorization: 
 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTYyOTV9.H-QPjwBFNPrfRBqwvcQvzeLn8fi_q3C-brYtkPlwp70}
+```
+Sample request
+
+<https://hotel-management-api-yhen.onrender.com/api/v1/rooms/63fcd32fc465f315bfca4876>
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "Room retrieved successfully",
+    "data": {
+        "_id": "63fcd32fc465f315bfca4876",
+        "name": "Suite",
+        "roomType": "63fc8b60108662d5e58e25df",
+        "price": 60000,
+        "createdAt": "2023-02-27T15:58:39.636Z",
+        "updatedAt": "2023-02-27T15:58:39.636Z"
+    }
+}
 ```
 
 ### PATCH
@@ -139,9 +214,27 @@ Sample request
 
 ```json
 {
-    "price": 11000
+    "price": 12000
 }
 ```
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "Room updated successfully",
+    "data": {
+        "_id": "63fcd32fc465f315bfca4876",
+        "name": "Suite",
+        "roomType": "63fc8b60108662d5e58e25df",
+        "price": 12000,
+        "createdAt": "2023-02-27T15:58:39.636Z",
+        "updatedAt": "2023-02-27T16:09:56.646Z"
+    }
+}
+```
+
 
 ### DELETE
 
@@ -162,7 +255,8 @@ To delete a room by id, you need to do the following:
 
 ### Request Headers
 
-```{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI}
+```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI}
 ```
 
 ## ROOM TYPES
@@ -191,7 +285,22 @@ Sample Request
 
 ```json
 {
-    "name": "Double room"
+    "name": "Deluxe room"
+}
+```
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "Room type created successfully",
+    "data": {
+        "name": "deluxe room",
+        "_id": "63fcd6b2c465f315bfca488f",
+        "createdAt": "2023-02-27T16:13:38.178Z",
+        "updatedAt": "2023-02-27T16:13:38.178Z"
+    }
 }
 ```
 
@@ -216,6 +325,40 @@ To fetch all room-types, you need to do the following:
 ```json
 {Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiZmVjYmFlZDU4OGZkYzA4N2I1OWUiLCJpYXQiOjE2Nzc0NTkzNjN9.Shq20btdSHPG6p6uXURbOfLN88BpFOuw4M9JN1EhE70}
 ```
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "Room types listed successfully",
+    "data": [
+        {
+            "_id": "63fc8adc108662d5e58e25d3",
+            "name": "maxi room",
+            "createdAt": "2023-02-27T10:50:04.969Z",
+            "updatedAt": "2023-02-27T10:50:04.969Z"
+        },
+        {
+            "_id": "63fc8b53108662d5e58e25d9",
+            "name": "single room",
+            "createdAt": "2023-02-27T10:52:03.065Z",
+            "updatedAt": "2023-02-27T10:52:03.065Z"
+        },
+        {
+            "_id": "63fc8b60108662d5e58e25df",
+            "name": "double room",
+            "createdAt": "2023-02-27T10:52:16.021Z",
+            "updatedAt": "2023-02-27T10:52:16.021Z"
+        },
+        {
+            "_id": "63fcd6b2c465f315bfca488f",
+            "name": "deluxe room",
+            "createdAt": "2023-02-27T16:13:38.178Z",
+            "updatedAt": "2023-02-27T16:13:38.178Z"
+        }
+    ]
+}
+```
 
 ### GET
 
@@ -234,6 +377,31 @@ To get a room-type by id, you need to do the following:
 1. You need to be authenticated. Both users and admin can get a room-type by id but must first be authenticated.
 2. You need to have a room-type Id. To get a room-type Id, you need to fetch all the room-type by using the fetch room-type endpoints. Then copy the id and put it as shown in the example below
 
+### Request Headers
+
+```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiZmVjYmFlZDU4OGZkYzA4N2I1OWUiLCJpYXQiOjE2Nzc0NTkzNjN9.Shq20btdSHPG6p6uXURbOfLN88BpFOuw4M9JN1EhE70}
+```
+
+Sample request
+
+<https://hotel-management-api-yhen.onrender.com/api/v1/room-types/63fcd6b2c465f315bfca488f>
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "Room retrieved successfully",
+    "data": {
+        "_id": "63fcd6b2c465f315bfca488f",
+        "name": "deluxe room",
+        "createdAt": "2023-02-27T16:13:38.178Z",
+        "updatedAt": "2023-02-27T16:13:38.178Z"
+    }
+}
+```
+
 ### PATCH
 
 ### Update Room Type by Id
@@ -251,6 +419,35 @@ To update a room-type by id, you need to do the following:
 1. You need to be authenticated and authorized. Only admin can update a room-type by id but must first be logged in as an admin.
 2. You need to have a room-type Id. To get a room-type Id, you need to fetch all the room-type by using the fetch room-type endpoints. Then copy the id and put it in the url as shown in the endpoint above
 3. Then go the body and update what you want to be updated as shown below.
+
+### Request Headers
+
+```json
+{Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZiZmVjYmFlZDU4OGZkYzA4N2I1OWUiLCJpYXQiOjE2Nzc0NTkzNjN9.Shq20btdSHPG6p6uXURbOfLN88BpFOuw4M9JN1EhE70}
+```
+
+Sample request
+
+```json
+{
+    "name": "Delux room"
+}
+```
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "RoomType updated successfully",
+    "data": {
+        "_id": "63fcd6b2c465f315bfca488f",
+        "name": "delux room",
+        "createdAt": "2023-02-27T16:13:38.178Z",
+        "updatedAt": "2023-02-27T16:26:13.275Z"
+    }
+}
+```
 
 ### DELETE
 
@@ -304,6 +501,27 @@ Sample request
 }
 ```
 
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "User created successfully",
+    "data": {
+        "user": {
+            "name": "guest chinyeewre",
+            "email": "guestchinyere@gmail.com",
+            "roles": "guest",
+            "_id": "63fcd0c795e2a94eeff98e38",
+            "createdAt": "2023-02-27T15:48:23.804Z",
+            "updatedAt": "2023-02-27T15:48:23.804Z",
+            "__v": 0
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjZDBjNzk1ZTJhOTRlZWZmOThlMzgiLCJpYXQiOjE2Nzc1MTI5MDN9.cNo9lXT50oEEkzqagiqJhd_Eu5Fv32Edv8_LiJXrPhg"
+    }
+}
+```
+
 ### POST
 
 ### Login User
@@ -331,6 +549,27 @@ Sample request
 }
 ```
 
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "User logged in successfully",
+    "data": {
+        "user": {
+            "_id": "63fcd0c795e2a94eeff98e38",
+            "name": "guest chinyeewre",
+            "email": "guestchinyere@gmail.com",
+            "roles": "guest",
+            "createdAt": "2023-02-27T15:48:23.804Z",
+            "updatedAt": "2023-02-27T15:50:48.013Z",
+            "__v": 1
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjZDBjNzk1ZTJhOTRlZWZmOThlMzgiLCJpYXQiOjE2Nzc1MTMwNDh9.i1CU0XwDmmVL602E7Rpr23PlumZOoX5t4GtTlGs56xE"
+    }
+}
+```
+
 ## GET
 
 ### Read User Profile
@@ -353,6 +592,24 @@ To get your own profile, you need to do the following:
 
 ```json
 {Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjOGMzYjEwODY2MmQ1ZTU4ZTI1ZTIiLCJpYXQiOjE2Nzc0OTY3NDd9.c65aGIKm6LcnAAlYGkvh7EXXfkQmP7AySFgh1n1tEMI}
+```
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "User listed successfully",
+    "data": {
+        "_id": "63fcd0c795e2a94eeff98e38",
+        "name": "guest chinyeewre",
+        "email": "guestchinyere@gmail.com",
+        "roles": "guest",
+        "createdAt": "2023-02-27T15:48:23.804Z",
+        "updatedAt": "2023-02-27T15:50:48.013Z",
+        "__v": 1
+    }
+}
 ```
 
 ### PATCH
@@ -385,6 +642,20 @@ Sample request
 ```json
 {
     "email": "chinyerejedidiah56@gmail.com"
+}
+```
+
+Sample response
+
+```json
+{
+    "success": true,
+    "message": "User updated successfully",
+    "data": 
+        {
+            "_id": "63fbf96c21062d40fe0fcf46",
+            "email": "chinyerejedidiahw56@gmail.com"
+        },
 }
 ```
 
